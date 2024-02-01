@@ -1,11 +1,13 @@
-
-function App() {
-
+import React from 'react';
+import Navbar from './components/Navbar'
+import Newsboard from './components/NewsBoard'
+const App = () => {
   return (
-    <>
-      App
-    </>
-  )
+    <div>
+      <Navbar />
+      <Newsboard />
+    </div>
+  );
 }
 
 export default App
