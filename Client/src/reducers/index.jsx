@@ -3,4 +3,4 @@ import news from './news'
 
 export default combineReducers({
     news,
-})
+});

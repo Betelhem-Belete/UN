@@ -1,6 +1,6 @@
 import markzukemberg from '../assets/mark-zukemberg.jpg';
 import './NewsItem.css'
-import 
+
 
 const NewsItem = () => {
   return (

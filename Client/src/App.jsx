@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import { getNews } from './actions/news'
 import Navbar from './components/Navbar';
 import NewsBoard from './components/NewsBoard';
-import NewsItem from './components/NewsItem';
+import NewsItems from './components/NewsItems';
 import Form from './components/Form';
 
 const App = () => {
@@ -16,9 +16,17 @@ const App = () => {
   return (
     <div>
       <Navbar />
+      {/* <div>
       <NewsBoard />
-      <NewsItems />
-      <Form />
+      </div> */}
+      <div className = 'row g-3'>
+        <div className = 'col-md-8'>
+        <NewsItems />
+        </div>
+        <div className = 'col-md-4'>
+        <Form />
+        </div>
+      </div>
     </div>
   );
 }
