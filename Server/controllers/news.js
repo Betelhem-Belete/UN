@@ -10,10 +10,10 @@ export const getNews = async (req, res) => {
     }
 }
 
-export const createNews = async (req, res) => {
+export const createNew = async (req, res) => {
     const body = req.body;
         
-    const newNews = new News(post);
+    const newNews = new News(body);
 
     try{
         await newNews.save();
