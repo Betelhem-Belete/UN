@@ -6,8 +6,8 @@ import { createNew } from '../actions/news'
 
 const Form = () => {
     const [ newData, setNewData ] = useState({
-        creator: '', 
         title: '', 
+        creator: '', 
         message: '', 
         tags: '', 
         selectedFile: ''
@@ -81,16 +81,15 @@ const Form = () => {
                     {/* <input class="form-control"  */}
                      <FileBase
                         type="file"
+                        name='selectedFile'
                         multiple={false}
                         onDone={({ base64 }) => setNewData({...newData, selectedFile: base64 })}
                         id="formFile"
                          />
                 </div>
-                <div class="mb-3 ">
+                <div class="mb-3">
                     <button type="submit"
-                     className="btn btn-secondary"
-                     name=''
-                     
+                     className="btn btn-secondary"                   
                      >
                         Post
                     </button>
@@ -107,4 +106,4 @@ const Form = () => {
   )
 }
 
-export default Form
+export default Form;
