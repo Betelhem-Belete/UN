@@ -88,11 +88,11 @@ const Form = () => {
                          />
                 </div>
                 <div class="mb-3">
-                    <button type="submit"
+                    <input type="button"
+                     name='submit'
+                     value='submit'
                      className="btn btn-secondary"                   
-                     >
-                        Post
-                    </button>
+                     />
                     <button type="button"
                      className="btn btn-secondary ms-2"
                      onClick={clear}
