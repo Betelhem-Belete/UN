@@ -9,7 +9,8 @@ const NewsItem = ({ singleNew }) => {
         <div className="card-body">
           <h5 className="card-title">{singleNew.title}</h5>
           <p className="card-text">{singleNew.message}</p>
-          <a href="#" className="btn btn-primary">Go somewhere</a>
+          <a href="#" className="btn btn-primary">edit</a>
+          <a href="#" className="btn btn-danger ms-5">delete</a>
         </div>
       </div>
   )

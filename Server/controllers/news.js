@@ -23,3 +23,13 @@ export const createNew = async (req, res) => {
         res.status(409).json({ message: error.message });
     }
 }
+
+export const editNews = async (req, res) => {
+    const { id: _id } = req.params;
+    const editingNew = req.body;
+    if(mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send('no news with that id');
+
+    const editedNew = await news.findByIdAndUpdate(_id, editingNew, {new: true});
+   
+    res.json(editedNew);
+}
