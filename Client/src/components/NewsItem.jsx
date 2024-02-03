@@ -2,13 +2,13 @@ import markzukemberg from '../assets/mark-zukemberg.jpg';
 import './NewsItem.css'
 
 
-const NewsItem = () => {
+const NewsItem = ({ singleNew }) => {
   return (
       <div className="card mb-3 d-inline-block my-3 mx-3 px-2 py-2">
-        <img src={ markzukemberg }  className="card-img-top" alt="mark" />
+        <img src={ singleNew.selectedFile }  className="card-img-top" alt="mark" />
         <div className="card-body">
-          <h5 className="card-title">Zukemburg sued</h5>
-          <p className="card-text">CEO of Snap, TikTok, Discord and Facebook Mark Zukemburg got sued. The judge said that "You have a blood in your hand".</p>
+          <h5 className="card-title">{singleNew.title}</h5>
+          <p className="card-text">{singleNew.message}</p>
           <a href="#" className="btn btn-primary">Go somewhere</a>
         </div>
       </div>

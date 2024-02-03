@@ -9,20 +9,18 @@ const NewsItems = () => {
     console.log(news);
 
 return (
-    <div>
-        <NewsItem />
-    </div>
-    // !news.length ? <Spinner animation="border" /> : (
-    //     <div className="container">
-    //         <div className="row">
-    //             {news.map((New) => (
-    //                 <div key={New.id} className="col-xs-12 col-sm-6">
-    //                     <NewsItem post={New} />
-    //                 </div>
-    //             ))}
-    //         </div>
-    //     </div>
     
+    !news.length ? <h1>no news</h1> : (
+        <div className="container">
+            <div className="row">
+                {news.map((singleNew) => (
+                    <div key={singleNew._id} className="col-xs-12 col-sm-6">
+                        <NewsItem singleNew={singleNew} />
+                    </div>
+                ))}
+            </div>
+        </div>
+    )
 );
 }
 
