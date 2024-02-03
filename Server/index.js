@@ -1,12 +1,12 @@
 import express from 'express';
-import cors from 'cors';
 import bodyparser from 'body-parser';
 import mongoose from 'mongoose';
+import cors from 'cors';
 
 import newsRouter from './routes/news/news.js';
 
 const app = express();
-
+app.use(express.json());
 
 app.use(cors());
 app.use('/news', newsRouter)
@@ -19,11 +19,6 @@ const PORT = process.env.PORT || 5000;
 //     origin: 'http://localhost:5173', // Change this to your frontend origin
 //     credentials: true, // If you need to support cookies, headers with credentials, etc.
 // };
-
-
-
 mongoose.connect(DB_URL)
     .then( () => app.listen(PORT, () => console.log(`server is running on port: ${PORT}`)))
     .catch((error) => console.log(error.message));
-
-

@@ -7,8 +7,8 @@ import { createNew } from '../actions/news'
 const Form = () => {
     const [ newData, setNewData ] = useState({
         title: '', 
-        creator: '', 
         message: '', 
+        creator: '', 
         tags: '', 
         selectedFile: ''
     })
@@ -17,9 +17,14 @@ const Form = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
+        console.log(newData)
         dispatch(createNew(newData));
     }
+
+    const handleChange = (e) => {
+        setNewData({ ...newData, [e.target.name]: e.target.value });
+    };
+    
 
     const clear = () => {
 
@@ -33,13 +38,35 @@ const Form = () => {
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                     {/* <label for="exampleFormControlInput1" class="form-label">Email address</label> */}
+                    <input type="text" 
+                      class="form-control"
+                      id="exampleFormControlInput1"
+                      placeholder="news title" 
+                      name='title'
+                      value={newData.title}
+                      onChange={handleChange}
+                  />
+                </div>                 
+                <div className="mb-3">
+                    {/* <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label> */}
+                    <textarea className="form-control" 
+                    id="exampleFormControlTextarea1" 
+                    placeholder="news description" 
+                    name='message'
+                    value={newData.message}
+                    onChange={handleChange}
+                  >
+                    </textarea>
+                </div>
+                <div className="mb-3">
+                    {/* <label for="exampleFormControlInput1" class="form-label">Email address</label> */}
                     <input type="text"
                       class="form-control"
                       id="exampleFormControlInput1"
                       placeholder="news creator"
                       name='creator'
                       value={newData.creator}
-                      onChange={(e) => setNewData({ ...newData, creator: e.target.value})}
+                      onChange={handleChange}
                      />
                 </div>
                 <div className="mb-3">
@@ -47,33 +74,10 @@ const Form = () => {
                     <input type="text" 
                       class="form-control"
                       id="exampleFormControlInput1"
-                      placeholder="news title" 
-                      name='title'
-                      value={newData.title}
-                      onChange={(e) => setNewData({ ...newData, title: e.target.value})}
-                    />
-                </div>
-                
-                <div className="mb-3">
-                    {/* <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label> */}
-                    <textarea className="form-control" 
-                    name='message' 
-                    id="exampleFormControlTextarea1" 
-                    placeholder="news description" 
-                    value={newData.message}
-                    onChange={(e) => setNewData({ ...newData, message: e.target.value})}
-                    rows="3">
-                    </textarea>
-                </div>
-                <div className="mb-3">
-                    {/* <label for="exampleFormControlInput1" class="form-label">Email address</label> */}
-                    <input type="text" 
-                      class="form-control"
-                      id="exampleFormControlInput1"
-                      placeholder="Tag" 
+                      placeholder="tag" 
                       name='tags'
                       value={newData.tags}
-                      onChange={(e) => setNewData({ ...newData, tags: e.target.value})}
+                      onChange={handleChange}
                     />
                 </div>
                 <div className="mb-3">
@@ -88,11 +92,12 @@ const Form = () => {
                          />
                 </div>
                 <div class="mb-3">
-                    <input type="button"
-                     name='submit'
-                     value='submit'
-                     className="btn btn-secondary"                   
+                    <input type="submit"
+                     className="btn btn-secondary"
+                     onClick={handleSubmit}                   
+                     value='Post'
                      />
+                        
                     <button type="button"
                      className="btn btn-secondary ms-2"
                      onClick={clear}
