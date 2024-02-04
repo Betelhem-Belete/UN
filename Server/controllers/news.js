@@ -1,3 +1,4 @@
+import mongoose from 'mongoose';
 import News from '../models/news.js';
 
 export const getNews = async (req, res) => {
@@ -24,12 +25,11 @@ export const createNew = async (req, res) => {
     }
 }
 
-export const editNews = async (req, res) => {
+export const editNew = async (req, res) => {
     const { id: _id } = req.params;
     const editingNew = req.body;
-    if(mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send('no news with that id');
-
-    const editedNew = await news.findByIdAndUpdate(_id, editingNew, {new: true});
+    if(!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send('no news with that id');
+    const editedNew = await News.findByIdAndUpdate(_id, {...editingNew, _id}, {new: true});
    
     res.json(editedNew);
 }

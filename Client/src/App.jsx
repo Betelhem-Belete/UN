@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux'
 import { getNews } from './actions/news'
 import Navbar from './components/Navbar';
@@ -7,11 +7,12 @@ import NewsItems from './components/NewsItems';
 import Form from './components/Form';
 
 const App = () => {
+  const [currentId, setCurrentId] = useState(null)
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getNews());
-  }, [dispatch]);
+  }, [currentId]);
 
   return (
     <div>
@@ -21,10 +22,10 @@ const App = () => {
       </div> */}
       <div className = 'row g-3'>
         <div className = 'col-md-8'>
-        <NewsItems />
+        <NewsItems setCurrentId={setCurrentId}/>
         </div>
         <div className = 'col-md-4'>
-        <Form />
+        <Form currentId = {currentId} setCurrentId={setCurrentId}/>
         </div>
       </div>
     </div>

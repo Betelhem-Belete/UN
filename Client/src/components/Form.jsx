@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './Form.css'
 import FileBase from 'react-file-base64'
-import { useDispatch} from 'react-redux'
-import { createNew } from '../actions/news'
+import { useDispatch, useSelector} from 'react-redux'
+import { createNew, editNew } from '../actions/news'
 
-const Form = () => {
+const Form = ({currentId, setCurrentId}) => {
     const [ newData, setNewData ] = useState({
         title: '', 
         message: '', 
@@ -12,13 +12,22 @@ const Form = () => {
         tags: '', 
         selectedFile: ''
     })
-
+    const snew = useSelector((state) => currentId ? state.news.find((n) => n._id === currentId) : null);
     const dispatch = useDispatch();
-
+    useEffect(() => {
+        if(snew) setNewData(snew);
+    }, [snew])
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(newData)
-        dispatch(createNew(newData));
+
+        if(currentId){
+            dispatch(currentId, editNew);
+        }else{
+            dispatch(createNew(newData));
+        }
+        clear();
+
     }
 
     const handleChange = (e) => {
@@ -27,7 +36,8 @@ const Form = () => {
     
 
     const clear = () => {
-
+        setCurrentId(null);
+        setCurrentId({creator: '', title: '', message: '', tags: '', selectedFile: ''})
     }
 
   return (
@@ -99,7 +109,7 @@ const Form = () => {
                      />
                         
                     <button type="button"
-                     className="btn btn-secondary ms-2"
+                     className="btn btn-danger ms-2"
                      onClick={clear}
                      >
                         Clear
