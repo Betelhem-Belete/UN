@@ -10,8 +10,8 @@ app.use(express.json());
 
 app.use(cors());
 app.use('/news', newsRouter)
-app.use(bodyparser.json({ limit: "30mb", extended: true}));
-app.use(bodyparser.urlencoded({ limit: "30mb", extended: true}));
+app.use(bodyparser.json({ limit: "50mb", extended: true}));
+app.use(bodyparser.urlencoded({ limit: "50mb", extended: true}));
 
 const DB_URL = 'mongodb+srv://uninews:uninews@cluster0.qp0nwzv.mongodb.net/UN'
 const PORT = process.env.PORT || 5000;
