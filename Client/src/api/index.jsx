@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-
+axios.defaults.withCredentials = true;
 //const url = 'http://127.0.0.1:5000/news';
 const url = 'https://unews-snowy.vercel.app/news';
 
