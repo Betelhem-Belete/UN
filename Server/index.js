@@ -10,7 +10,11 @@ const app = express();
 
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ limit: '50mb', extended: true }));
-app.use(cors());
+app.use(cors(
+     origin: 'const url = 'unews-snowy.vercel.app/news',
+     credentials: true,
+    };
+));
 app.use('/news', newsRouter);
 
 const DB_URL = 'mongodb+srv://uninews:uninews@cluster0.qp0nwzv.mongodb.net/UN';
