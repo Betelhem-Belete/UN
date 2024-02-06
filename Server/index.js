@@ -12,6 +12,7 @@ app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ limit: '50mb', extended: true }));
 app.use(cors(
      origin: ['https://unew.vercel.app'],
+     methods: ['GET', 'POST'],
      credentials: true,
     };
 ));
@@ -19,10 +20,7 @@ app.use('/news', newsRouter);
 
 const DB_URL = 'mongodb+srv://uninews:uninews@cluster0.qp0nwzv.mongodb.net/UN';
 const PORT = process.env.PORT || 5000;
-// const corsOptions = {
-//     origin: 'http://localhost:5173', // Change this to your frontend origin
-//     credentials: true, // If you need to support cookies, headers with credentials, etc.
-// };
+
 mongoose
   .connect(DB_URL)
   .then(() =>
