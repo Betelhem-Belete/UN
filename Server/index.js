@@ -11,7 +11,7 @@ const app = express();
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ limit: '50mb', extended: true }));
 app.use(cors(
-     origin: ['https://unews-snowy.vercel.app/news'],
+     origin: ['https://unews-snowy.vercel.app'],
      credentials: true,
     };
 ));
